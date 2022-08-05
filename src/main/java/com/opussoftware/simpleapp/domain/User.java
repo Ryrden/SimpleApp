@@ -2,12 +2,13 @@ package com.opussoftware.simpleapp.domain;
 
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.util.Objects;
 
+@Entity
+@Table(name = "userTable")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
