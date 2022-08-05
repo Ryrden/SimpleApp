@@ -15,12 +15,23 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @NotEmpty(message = "name cannot be empty")
-    @Length(min = 2,max = 100, message = "name must be between 2 and 100")
+    @Length(min = 2, max = 100, message = "name must be between 2 and 100")
     private String name;
     @NotEmpty(message = "login cannot be empty")
     private String login;
     @NotEmpty(message = "password cannot be empty")
     private String password;
+
+    public User() {
+        super();
+    }
+
+    public User(Integer id, String name, String login, String password) {
+        this.id = id;
+        this.name = name;
+        this.login = login;
+        this.password = password;
+    }
 
     public Integer getId() {
         return id;
