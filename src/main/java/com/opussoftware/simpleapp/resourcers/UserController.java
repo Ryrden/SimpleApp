@@ -4,11 +4,9 @@ import com.opussoftware.simpleapp.domain.User;
 import com.opussoftware.simpleapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 @RestController
@@ -28,5 +26,11 @@ public class UserController {
     public ResponseEntity<List<User>> findAll() {
         List<User> usersList = service.findAll();
         return ResponseEntity.ok().body(usersList);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<User> update(@PathVariable Integer id, @RequestBody User object){
+        User newObject = service.update(id,object);
+        return ResponseEntity.ok().body(newObject);
     }
 }

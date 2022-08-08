@@ -22,4 +22,12 @@ public class UserService {
     public List<User> findAll() {
         return repository.findAll();
     }
+
+    public User update(Integer id, User object) {
+        User newObject = findById(id);
+        newObject.setName(object.getName());
+        newObject.setLogin(object.getLogin());
+        newObject.setPassword(object.getPassword());
+        return repository.save(newObject); //The Save is interpreted as update because the same ID
+    }
 }
