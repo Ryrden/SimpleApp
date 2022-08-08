@@ -35,4 +35,9 @@ public class UserService {
         object.setId(null); //Setting ID as null makes JPA infer
         return repository.save(object);
     }
+
+    public void delete(Integer id) {
+        findById(id);
+        repository.deleteById(id);
+    }
 }
