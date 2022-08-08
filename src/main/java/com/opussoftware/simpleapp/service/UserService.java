@@ -30,4 +30,9 @@ public class UserService {
         newObject.setPassword(object.getPassword());
         return repository.save(newObject); //The Save is interpreted as update because the same ID
     }
+
+    public User create(User object) {
+        object.setId(null); //Setting ID as null makes JPA infer
+        return repository.save(object);
+    }
 }
