@@ -6,6 +6,7 @@ import com.opussoftware.simpleapp.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -16,5 +17,9 @@ public class UserService {
     public User findById(Integer id){
         Optional<User> object = repository.findById(id);
         return object.orElseThrow( () -> new ObjectNotFoundException("Object not found! Id: " + id + ", Type: " + User.class.getName()));
+    }
+
+    public List<User> findAll() {
+        return repository.findAll();
     }
 }
