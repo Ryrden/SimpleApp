@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -31,13 +32,13 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<User> update(@PathVariable Integer id, @RequestBody User object){
+    public ResponseEntity<User> update(@PathVariable Integer id, @Valid @RequestBody User object){
         User newObject = service.update(id,object);
         return ResponseEntity.ok().body(newObject);
     }
 
     @PostMapping
-    public ResponseEntity<User> create(@RequestBody User object){
+    public ResponseEntity<User> create(@Valid @RequestBody User object){
         User newObject = service.create(object);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObject.getId()).toUri();
         return ResponseEntity.created(uri).build();
