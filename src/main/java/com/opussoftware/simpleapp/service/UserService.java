@@ -20,7 +20,10 @@ public class UserService {
     }
 
     public List<User> findAll() {
-        return repository.findAll();
+        List<User> objects =  repository.findAll();
+        if (objects.isEmpty())
+            throw new ObjectNotFoundException("Objects not found! Type: " + User.class.getName());
+        return objects;
     }
 
     public User update(Integer id, User object) {
