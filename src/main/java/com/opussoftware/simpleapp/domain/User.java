@@ -1,6 +1,7 @@
 package com.opussoftware.simpleapp.domain;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.hateoas.RepresentationModel;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -9,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "userTable")
-public class User implements Serializable {
+public class User extends RepresentationModel<User> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
